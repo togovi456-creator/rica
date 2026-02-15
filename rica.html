@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rica Yawa • Mon Évidence ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;1,600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink: #ff4d6d;
+            --accent-gold: #d4af37;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body, html {
+            height: 100%; width: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* BACKGROUND */
+        .full-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('rica.jpeg') center/cover no-repeat;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Un peu plus sombre pour que les mots brillent */
+            backdrop-filter: blur(2px);
+            z-index: -1;
+        }
+
+        .main-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        /* NOM ANIMÉ */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.8rem;
+            margin-bottom: 30px;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); text-shadow: 0 0 10px var(--pink); }
+            50% { transform: scale(1.03); text-shadow: 0 0 25px var(--pink), 0 0 40px white; }
+            100% { transform: scale(1); text-shadow: 0 0 10px var(--pink); }
+        }
+
+        /* STYLE ACCORDÉON MINIMALISTE */
+        .modern-list {
+            width: 100%;
+            max-width: 450px;
+            z-index: 10;
+        }
+
+        .list-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 10px;
+            transition: all 0.4s ease;
+        }
+
+        .list-trigger {
+            width: 100%;
+            padding: 20px 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-trigger span {
+            font-size: 0.9rem;
+            transition: transform 0.4s ease;
+            color: var(--pink);
+        }
+
+        .list-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .list-content p {
+            padding: 10px 15px 30px 15px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #eee;
+        }
+
+        .list-item.active {
+            border-bottom: 1px solid var(--pink);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .list-item.active .list-content {
+            max-height: 300px;
+        }
+
+        .list-item.active span {
+            transform: rotate(90deg);
+        }
+
+        /* PÉTALES */
+        .particle {
+            position: fixed;
+            top: -10%;
+            pointer-events: none;
+            z-index: 5;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        .music-btn {
+            position: fixed;
+            bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .music-btn:hover {
+            background: var(--pink);
+            border-color: var(--pink);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="full-bg"></div>
+    <div class="overlay"></div>
+
+    <div class="main-container">
+        <h1>Rica Yawa</h1>
+
+        <div class="modern-list">
+            <div class="list-item">
+                <button class="list-trigger" onclick="toggle(this)">
+                    Ce que je ressens... <span>➤</span>
+                </button>
+                <div class="list-content">
+                    <p>"Rica Yawa, il y a des rencontres qu'on n'oublie jamais. Depuis que tu es entrée dans ma vie, chaque moment semble plus lumineux. Ta présence est devenue mon plus beau cadeau."</p>
+                </div>
+            </div>
+
+            <div class="list-item">
+                <button class="list-trigger" onclick="toggle(this)">
+                    Pourquoi toi ? <span>➤</span>
+                </button>
+                <div class="list-content">
+                    <p>"Ce n'est pas seulement ton sourire qui me captive, c'est ton âme, ta douceur et cette force que tu dégages. Tu es une femme exceptionnelle et je tenais à ce que tu le saches aujourd'hui."</p>
+                </div>
+            </div>
+
+            <div class="list-item">
+                <button class="list-trigger" onclick="toggle(this)">
+                    Ma promesse... <span>➤</span>
+                </button>
+                <div class="list-content">
+                    <p>"Je ne veux pas de grands mots compliqués, juste la chance de te voir sourire encore plus souvent. Pour cette Saint-Valentin, mon seul souhait, c'est toi. On se voit bientôt ? ❤️"</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="music-btn" onclick="playMusic()">POUR TES OREILLES 🎵</button>
+    </div>
+
+    <audio id="player" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-memories.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function toggle(btn) {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('active');
+            document.querySelectorAll('.list-item').forEach(el => el.classList.remove('active'));
+            if (!isOpen) { item.classList.add('active'); }
+        }
+
+        const audio = document.getElementById('player');
+        function playMusic() {
+            if (audio.paused) {
+                audio.play();
+                document.querySelector('.music-btn').innerText = "PAUSE";
+            } else {
+                audio.pause();
+                document.querySelector('.music-btn').innerText = "CONTINUER";
+            }
+        }
+
+        const particles = ['🌸', '🌹', '✨', '💖'];
+        function createParticle() {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.innerText = particles[Math.floor(Math.random() * particles.length)];
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            p.style.opacity = Math.random();
+            const dur = Math.random() * 5 + 6;
+            p.style.animationDuration = dur + 's';
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), dur * 1000);
+        }
+        setInterval(createParticle, 350);
+
+        document.addEventListener('click', () => {
+            if(audio.paused) {
+                audio.play();
+                document.querySelector('.music-btn').innerText = "PAUSE";
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
